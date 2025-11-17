@@ -1861,6 +1861,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateWhatsAppButton();
     setupFooterIntersection();
     setupFilters();
+    setupDarkMode();
 });
 
 // Setup intersection observer for footer
@@ -2233,6 +2234,29 @@ function updatePagination(totalDresses) {
         }
     });
     paginationContainer.appendChild(nextButton);
+}
+
+// Setup dark mode toggle
+function setupDarkMode() {
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️';
+    } else {
+        toggleButton.textContent = '🌙';
+    }
+
+    // Toggle dark mode on button click
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+        toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
+    });
 }
 
 // Send selected dresses to WhatsApp
