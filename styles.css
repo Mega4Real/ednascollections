@@ -29,7 +29,7 @@ header {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 0rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
 }
 
@@ -87,7 +87,11 @@ header {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 8rem;
+        padding-top: 1rem;
+    }
+
+    header {
+        padding: 0;
     }
 
     .filters {
